@@ -5,3 +5,7 @@ IMG_NAME := env_var("IMG_NAME")
 
 build:
     docker build -t {{IMG_NAME}} .
+
+
+bash:
+    docker run --rm -it {{IMG_NAME}}
