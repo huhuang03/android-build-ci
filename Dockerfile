@@ -12,14 +12,13 @@ ENV PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-t
 
 COPY --from=android-cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools
 
-RUN yes | sdkmanager --licenses && \
-    sdkmanager \
-        "platform-tools" \
-        "platforms;android-34" \
-        "platforms;android-36" \
-        "build-tools;34.0.0" \
-        "build-tools;35.0.0" \
-        "ndk;27.0.12077973"
+RUN yes | sdkmanager --licenses
+RUN sdkmanager "platform-tools"
+RUN sdkmanager "platforms;android-34"
+RUN sdkmanager "platforms;android-36"
+RUN sdkmanager "build-tools;34.0.0"
+RUN sdkmanager "build-tools;35.0.0"
+RUN sdkmanager "ndk;27.0.12077973"
 
 # 设置工作目录
 WORKDIR /workspace
