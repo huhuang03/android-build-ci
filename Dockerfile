@@ -34,6 +34,15 @@ RUN wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.
     && rm /tmp/gradle.zip
 ENV PATH=/opt/gradle/gradle-${GRADLE_VERSION}/bin:$PATH
 
+
+ENV GRADLE_VERSIONS="7.6 8.0 8.3 8.13"
+RUN mkdir -p /root/.gradle/wrapper/dists && \
+    for v in $GRADLE_VERSIONS; do \
+      wget https://services.gradle.org/distributions/gradle-${v}-bin.zip -O /tmp/gradle-wrapper-${v}.zip && \
+      unzip /tmp/gradle-wrapper-${v}.zip -d /root/.gradle/wrapper/dists/gradle-${v}-bin && \
+      rm /tmp/gradle-wrapper-${v}.zip; \
+    done
+
 # 设置工作目录
 WORKDIR /workspace
 
