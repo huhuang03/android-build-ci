@@ -1,0 +1,6 @@
+platform-tools
+platforms;android-34
+platforms;android-36
+build-tools;34.0.0
+build-tools;35.0.0
+ndk;27.0.12077973
